@@ -6,27 +6,61 @@
 package vehicletester;
 
 public class Vehicle {
-    public double gasKilometrage;
+    private double gasKilometrage;
     public double fuelTankSize;
     public double fuelAvailable;
     public double kilometresTravelled;
-
+    public int numberOfPassengers;
+    public double passengerFare;
+    public double costOfFuel;
+    
     public Vehicle() {
         //Default Constructor
         gasKilometrage = 0;
         fuelTankSize = 0;
         fuelAvailable = 0;
         kilometresTravelled = 0;
+        numberOfPassengers = 0;
+        passengerFare = 0;
+        costOfFuel = 0;
     }
 
-    public Vehicle(double gK, double fTS, double fA, double kT){
+    public Vehicle(double gK, double fTS, double fA, double kT, int nP, double pF,double cOF){
         gasKilometrage = gK;
         fuelTankSize = fTS;
         fuelAvailable = fA;
         kilometresTravelled = kT;
+        numberOfPassengers  = nP;
+        passengerFare = pF;
+        costOfFuel = cOF;
     }
-
+    public void setKilometrage (double gK){
+        gasKilometrage = gK;
+    }
+    
+    public double getKilometrage (){
+        return gasKilometrage;
+    }
+    
+    public double vehicleRevenue(){
+        double revenue;
+        revenue = numberOfPassengers * passengerFare;
+        return revenue;
+    }
+    
+    public double vehicleCost(){
+        double cost;
+        cost = gasKilometrage * costOfFuel * kilometresTravelled ;
+        return cost;
+    }
+    
+    public double vehicleProfit(){
+        double profit;
+        profit =  vehicleCost()- vehicleRevenue();
+        return profit;
+    }
     public void addFuel(double gas){
+        
         if((fuelTankSize - fuelAvailable) >= gas){
             fuelAvailable += gas;
             System.out.println("Added " + gas + "L of gas to the tank.");
@@ -58,6 +92,7 @@ public class Vehicle {
         }
     }
 
+    @Override
     public String toString() {
         String output = "Gas Kilometrage = " + gasKilometrage + "\n";
         output += "Fuel Tank Size = " + fuelTankSize + "\n";
@@ -65,4 +100,10 @@ public class Vehicle {
         output += "Kilometres Driven = " + kilometresTravelled + "\n";
         return output;
     }
+    
+    public class Engine{
+        double displacement;
+        int numberOfCylinders;
+    
+}
 }
