@@ -13,6 +13,7 @@ public class Vehicle {
     public int numberOfPassengers;
     public double passengerFare;
     public double costOfFuel;
+    public Engine e;
     
     public Vehicle() {
         //Default Constructor
@@ -104,6 +105,19 @@ public class Vehicle {
     public class Engine{
         double displacement;
         int numberOfCylinders;
+        int numberOfDriveWheels;
+        
+    public Engine(){
+        displacement = 2.5;
+        numberOfCylinders = 4;
+        numberOfDriveWheels = 2;
+    }
     
+    public boolean fourWheelDrive(){
+        if(numberOfDriveWheels == 4){
+            return true;
+        }
+        return false;
+    }
 }
 }
